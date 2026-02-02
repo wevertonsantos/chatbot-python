@@ -9,14 +9,14 @@ client = OpenAI(
     base_url="https://openrouter.ai/api/v1"
 )
 
-mensagem = "Olá"
+def get_response(message: str) -> str:
 
-response = client.chat.completions.create(
+    response = client.chat.completions.create(
     model="google/gemma-3-27b-it:free",
     messages=[
-        {"role": "system", "content": ""},
-        {"role": "user", "content": mensagem}
-    ]
-)
+            {"role": "system", "content": ""},
+            {"role": "user", "content": ""}
+        ]
+    )
 
-print(response.choices[0].message.content)
+    return response.choices[0].message.content

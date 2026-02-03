@@ -1,10 +1,15 @@
 from fastapi import FastAPI,Request
 from fastapi.templating import Jinja2Templates
 import uvicorn
+from pathlib import Path
 
 app = FastAPI()
 
-template = Jinja2Templates(directory="../frontend/templates")
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+template = Jinja2Templates(
+    directory=str(BASE_DIR / "frontend" / "templates")
+)
 
 @app.get('/chat')
 def chatbot(req: Request):

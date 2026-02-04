@@ -8,11 +8,11 @@ client = OpenAI(
     base_url="https://openrouter.ai/api/v1"
 )
 
-def resposta_bot():
+def resposta_bot(mensagem):
     resposta = client.chat.completions.create(
         model="stepfun/step-3.5-flash:free",
         messages=[
-            {"role":"user","content":"Olá"}
+            {"role":"user","content":mensagem}
         ]
     )
 

@@ -16,12 +16,6 @@ templates = Jinja2Templates(
 def home_chatbot(request: Request):
     return templates.TemplateResponse(request,"chatbot.html")
 
-@app.get('/api/resposta_bot')
-def pegar_resposta():
-    return resposta_bot()
-    '''
-    return template.TemplateResponse(
-        name="chatbot.html",
-        context={"request":req}
-    )
-    '''
+@app.post('/pegar_resposta')
+def pegar_resposta(mensagem:str):
+    return resposta_bot(mensagem)

@@ -16,4 +16,4 @@ def resposta_bot():
         ]
     )
 
-    return resposta.choices[0].message
+    return resposta.choices[0].message.content

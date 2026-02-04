@@ -1,18 +1,22 @@
 from fastapi import FastAPI,Request
 from fastapi.templating import Jinja2Templates
-import uvicorn
-from pathlib import Path
+from fastapi.staticfiles import StaticFiles
 from chat import resposta_bot
 
 app = FastAPI()
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+app.mount("/static",StaticFiles(directory="frontend/static"),name="static")
 
-template = Jinja2Templates(
-    directory=str(BASE_DIR / "frontend" / "templates")
+templates = Jinja2Templates(
+    directory="frontend/templates"
 )
 
-@app.get('/')
+@app.get('/',include_in_schema=False)
+@app.get('/chat',include_in_schema=False)
+def home_chatbot(request: Request):
+    return templates.TemplateResponse(request,"chatbot.html")
+
+@app.get('/api/resposta_bot')
 def pegar_resposta():
     return resposta_bot()
     '''

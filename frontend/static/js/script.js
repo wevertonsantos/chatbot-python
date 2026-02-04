@@ -1,25 +1,25 @@
 const $ = document
 const botaoEnviarMensagemUsuario = $.getElementById("enviar_mensagem_usuario")
 
-botaoEnviarMensagemUsuario.addEventListener('click', (e) => {
-    e.preventDefault()
-    const mensagemUsuario = $.getElementById("mensagem_usuario").value
-
-    fetch("http://127.0.0.1:8000/pegar_resposta", {
-    method: 'POST',
-    headers: {
-        'Content-Type' : 'application/json'
-    },
-    body: JSON.stringify({"mensagem":mensagemUsuario})
-    }).then(res => {
-        if (!res.ok) {
-            console.log('Problema')
-            return
-        }
-
-        return res.json()
+const pegarMensagemUsuario = () => {
+    botaoEnviarMensagemUsuario.addEventListener('click', (e) => {
+        e.preventDefault()
+        const valorMensagemUsuario = $.getElementById("mensagem_usuario").value
+        respostaApi(valorMensagemUsuario)
     })
-        .then(data => {
-        console.log(data.resposta)
+}
+
+const respostaApi = async (mensagemUsuario) => {
+    const res = await fetch("http://127.0.0.1:8000/pegar_resposta", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ mensagem: mensagemUsuario })
     })
-})
+
+    const data = await res.json()
+    console.log(data.resposta)
+}
+
+pegarMensagemUsuario()

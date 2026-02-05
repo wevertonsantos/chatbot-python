@@ -1,11 +1,19 @@
 const $ = document
 const botaoEnviarMensagemUsuario = $.getElementById("enviar_mensagem_usuario")
+const body = $.querySelector("body")
 
-const pegarMensagemUsuario = () => {
-    botaoEnviarMensagemUsuario.addEventListener('click', (e) => {
+const main = () => {
+    botaoEnviarMensagemUsuario.addEventListener('click', async (e) => {
         e.preventDefault()
+
         const valorMensagemUsuario = $.getElementById("mensagem_usuario").value
-        respostaApi(valorMensagemUsuario)
+
+        respostaBot = await respostaApi(valorMensagemUsuario)
+
+        const p = $.createElement("p")
+        p.innerText = respostaBot
+        body.appendChild(p)
+
     })
 }
 
@@ -19,7 +27,7 @@ const respostaApi = async (mensagemUsuario) => {
     })
 
     const data = await res.json()
-    console.log(data.resposta)
+    return data.resposta
 }
 
-pegarMensagemUsuario()
+main()

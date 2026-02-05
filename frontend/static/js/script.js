@@ -1,8 +1,8 @@
 const $ = document
 const botaoEnviarMensagemUsuario = $.getElementById("botao_enviar")
+const caixaMensagemUsuario = $.getElementById("caixa_mensagem_usuario")
 const body = $.querySelector("body")
-const mensagemUsuarioContainer = $.querySelector(".mensagem_usuario_container")
-const mensagemBotContainer = $.querySelector(".mensagem_bot_container")
+const chatContainer = $.querySelector('.chat_container')
 
 const main = () => {
     botaoEnviarMensagemUsuario.addEventListener('click', async (e) => {
@@ -16,17 +16,24 @@ const main = () => {
 
         respostaBot = await respostaApi(valorMensagemUsuario)
 
+        const mensagemUsuarioContainer = $.createElement("div")
         mensagemUsuarioContainer.style.display = 'flex'
+        mensagemUsuarioContainer.classList.add("mensagem_usuario_container")
+        chatContainer.prepend(mensagemUsuarioContainer)
         const pMensagemUsuario = $.createElement("p")
-        pMensagemUsuario.classList.add("mensagem_usuario")
         pMensagemUsuario.innerText = valorMensagemUsuario
         mensagemUsuarioContainer.appendChild(pMensagemUsuario)
-
+        
+        const mensagemBotContainer = $.createElement("div")
+        mensagemBotContainer.classList.add("mensagem_bot_container")
+        chatContainer.prepend(mensagemBotContainer)
         const pMensagemBot = $.createElement("p")
         pMensagemBot.classList.add("mensagem_bot")
         pMensagemBot.innerText = respostaBot
         mensagemBotContainer.appendChild(pMensagemBot)
-
+    
+        caixaMensagemUsuario.value = ''
+        chatContainer.scrollTop = chatContainer.scrollHeight;
     })
 }
 

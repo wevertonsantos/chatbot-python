@@ -1,18 +1,31 @@
 const $ = document
-const botaoEnviarMensagemUsuario = $.getElementById("enviar_mensagem_usuario")
+const botaoEnviarMensagemUsuario = $.getElementById("botao_enviar")
 const body = $.querySelector("body")
+const mensagemUsuarioContainer = $.querySelector(".mensagem_usuario_container")
+const mensagemBotContainer = $.querySelector(".mensagem_bot_container")
 
 const main = () => {
     botaoEnviarMensagemUsuario.addEventListener('click', async (e) => {
         e.preventDefault()
 
-        const valorMensagemUsuario = $.getElementById("mensagem_usuario").value
+        const valorMensagemUsuario = $.getElementById("caixa_mensagem_usuario").value
+
+        if (!valorMensagemUsuario) {
+            return;
+        }
 
         respostaBot = await respostaApi(valorMensagemUsuario)
 
-        const p = $.createElement("p")
-        p.innerText = respostaBot
-        body.appendChild(p)
+        mensagemUsuarioContainer.style.display = 'flex'
+        const pMensagemUsuario = $.createElement("p")
+        pMensagemUsuario.classList.add("mensagem_usuario")
+        pMensagemUsuario.innerText = valorMensagemUsuario
+        mensagemUsuarioContainer.appendChild(pMensagemUsuario)
+
+        const pMensagemBot = $.createElement("p")
+        pMensagemBot.classList.add("mensagem_bot")
+        pMensagemBot.innerText = respostaBot
+        mensagemBotContainer.appendChild(pMensagemBot)
 
     })
 }

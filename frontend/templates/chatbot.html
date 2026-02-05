@@ -5,11 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="/static/js/script.js" defer></script>
+    <link rel="stylesheet" href="/static/css/chatbot.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=send" />
 </head>
 <body>
-    <form>
-        <input id="mensagem_usuario" type="text">
-        <button id="enviar_mensagem_usuario">Enviar</button>
-    </form>
+    <div class="main_container">
+        <div class="nav_logo_container">
+            <h1 class="logo">Saints</h1>
+            <nav class="nav_container">
+                <div class="novo_chat_container">
+                    <p><span></span>Novo chat</p>
+                </div>
+                <div class="seu_chats_container">
+                    <p>Seus chats</p>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </div>
+                <p><span></span> Weverton Santos</p>
+            </nav>
+        </div>
+        <div class="chat_container">
+            <div class="mensagem_usuario_container">
+            </div>
+            <div class="mensagem_bot_container">
+            </div>
+            <form class="form_container">
+                <input id="caixa_mensagem_usuario" type="text" placeholder="Pergunte alguma coisa">
+                <button id="botao_enviar"><span class="material-symbols-outlined">send</span></button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

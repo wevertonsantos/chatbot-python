@@ -90,11 +90,34 @@ input:focus{
     display: flex;
     flex-direction: column;
     overflow: auto;
+    overflow-y: scroll;
     width: 100%;
+    height: 100vh;
     height: auto;
     background-color: #444444;
     margin: 20px;
     border-radius: 20px;
+    align-items: center;
+    justify-content: end;
+}
+
+.chat_container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat_container::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 20px;
+}
+
+.mensagens_container{
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    width: 100%;
+    height: auto;
     align-items: center;
     justify-content: end;
 }
@@ -108,7 +131,7 @@ input:focus{
     height: auto;
     background-color: #6d6d6d;
     border-radius: 10px;
-    margin-bottom: 15px;
+    margin: 15px 0px 15px 0px;
 }
 
 .mensagem_usuario{
@@ -119,10 +142,7 @@ input:focus{
     text-align: justify;
     width: 80%;
     height: auto;
-}
-
-.mensagem_bot {
-    margin: 20px;
+    margin: 15px 0px 15px 0px;
 }
 
 .form_container{
@@ -136,7 +156,7 @@ input:focus{
 #caixa_mensagem_usuario{
     color: #fff;
     border: none;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 10px;
     height: 70px;
     background-color: #222222;
     width: 100%;

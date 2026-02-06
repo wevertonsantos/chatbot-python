@@ -2,39 +2,50 @@ const $ = document
 const botaoEnviarMensagemUsuario = $.getElementById("botao_enviar")
 const caixaMensagemUsuario = $.getElementById("caixa_mensagem_usuario")
 const body = $.querySelector("body")
-const chatContainer = $.querySelector('.chat_container')
+const chatContainer = $.querySelector("chat_container")
+const mensagensContainer = $.querySelector('.mensagens_container')
+const form = $.querySelector('form')
 
 const main = () => {
-    botaoEnviarMensagemUsuario.addEventListener('click', async (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault()
-
-        const valorMensagemUsuario = $.getElementById("caixa_mensagem_usuario").value
+        valorMensagemUsuario = $.getElementById("caixa_mensagem_usuario").value.trim()
 
         if (!valorMensagemUsuario) {
             return;
         }
 
-        respostaBot = await respostaApi(valorMensagemUsuario)
-
-        const mensagemUsuarioContainer = $.createElement("div")
-        mensagemUsuarioContainer.style.display = 'flex'
-        mensagemUsuarioContainer.classList.add("mensagem_usuario_container")
-        chatContainer.prepend(mensagemUsuarioContainer)
-        const pMensagemUsuario = $.createElement("p")
-        pMensagemUsuario.innerText = valorMensagemUsuario
-        mensagemUsuarioContainer.appendChild(pMensagemUsuario)
-        
-        const mensagemBotContainer = $.createElement("div")
-        mensagemBotContainer.classList.add("mensagem_bot_container")
-        chatContainer.prepend(mensagemBotContainer)
-        const pMensagemBot = $.createElement("p")
-        pMensagemBot.classList.add("mensagem_bot")
-        pMensagemBot.innerText = respostaBot
-        mensagemBotContainer.appendChild(pMensagemBot)
-    
+        criarMensagemUsuario(valorMensagemUsuario)
         caixaMensagemUsuario.value = ''
+        
+        respostaBot = await respostaApi(valorMensagemUsuario)
+        criarMensagemBot(respostaBot)
+            
         chatContainer.scrollTop = chatContainer.scrollHeight;
     })
+}
+
+const criarMensagemUsuario = (valorMensagemUsuario) => {
+    const mensagemUsuarioContainer = $.createElement("div")
+    mensagemUsuarioContainer.style.display = 'flex'
+    mensagemUsuarioContainer.classList.add("mensagem_usuario_container")
+    mensagensContainer.appendChild(mensagemUsuarioContainer)
+
+    const mensagemUsuario = $.createElement("div")
+    mensagemUsuario.classList.add("mensagem_usuario")
+    mensagemUsuario.innerText = valorMensagemUsuario
+    mensagemUsuarioContainer.appendChild(mensagemUsuario)
+}
+
+const criarMensagemBot = (respostaBot) => {
+    const mensagemBotContainer = $.createElement("div")
+    mensagemBotContainer.classList.add("mensagem_bot_container")
+    mensagensContainer.appendChild(mensagemBotContainer)
+
+    const mensagemBot = $.createElement("div")
+    mensagemBot.classList.add("mensagem_bot")
+    mensagemBot.innerText = respostaBot
+    mensagemBotContainer.appendChild(mensagemBot)
 }
 
 const respostaApi = async (mensagemUsuario) => {

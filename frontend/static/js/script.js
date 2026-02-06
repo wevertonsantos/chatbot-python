@@ -18,9 +18,25 @@ const main = () => {
         criarMensagemUsuario(valorMensagemUsuario)
         caixaMensagemUsuario.value = ''
         
+        const pensandoElemento = criarMensagemPensando()
+
+        const respostaBot = await respostaApi(valorMensagemUsuario)
+
+        substituirPorResposta(pensandoElemento, respostaBot)
+
         respostaBot = await respostaApi(valorMensagemUsuario)
         criarMensagemBot(respostaBot)
     })
+}
+
+const substituirPorResposta = (elementoPensando, respostaBot) => {
+
+    const divMensagemBot = document.createElement("div")
+    divMensagemBot.classList.add("mensagem_bot")
+
+    divMensagemBot.innerHTML = marked.parse(respostaBot)
+
+    elementoPensando.replaceWith(divMensagemBot)
 }
 
 const criarMensagemUsuario = (valorMensagemUsuario) => {
@@ -35,15 +51,16 @@ const criarMensagemUsuario = (valorMensagemUsuario) => {
     mensagemUsuarioContainer.appendChild(mensagemUsuario)
 }
 
-const criarMensagemBot = (respostaBot) => {
+const criarMensagemPensando = () => {
     const mensagemBotContainer = $.createElement("div")
     mensagemBotContainer.classList.add("mensagem_bot_container")
     mensagensContainer.appendChild(mensagemBotContainer)
 
-    const mensagemBot = $.createElement("div")
-    mensagemBot.classList.add("mensagem_bot")
-    mensagemBot.innerHTML = marked.parse(respostaBot)
-    mensagemBotContainer.appendChild(mensagemBot)
+    const divPensandoBot = $.createElement("div")
+    divPensandoBot.classList.add("bot_pensando")
+    divPensandoBot.innerText = "Pensando..."
+    mensagemBotContainer.appendChild(divPensandoBot)
+    return divPensandoBot
 }
 
 const respostaApi = async (mensagemUsuario) => {

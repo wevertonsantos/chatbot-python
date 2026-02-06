@@ -6,7 +6,7 @@
     <title>Document</title>
     <script src="/static/js/script.js" defer></script>
     <link rel="stylesheet" href="/static/css/chatbot.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=send" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 <body>
     <!-- Principal Container -->
@@ -18,23 +18,39 @@
             <!-- Nav -->
             <nav class="nav_container">
                 <div class="novo_chat_container">
-                    <p><span></span>Novo chat</p>
+                    <span class="material-symbols-outlined chat_add_on">chat_add_on</span>
+                    <p>Novo chat</p>
                 </div>
                 <div class="seu_chats_container">
                     <p>Seus chats</p>
-                    <ul>
-                        <li></li>
-                    </ul>
+                    <div class="chats">
+                        <a href="#"><p>Lorem, ipsum dolor sit</p></a>
+                        <a href="#"><p>Lorem, ipsum dolor sit</p></a>
+                        <a href="#"><p>Lorem, ipsum dolor sit</p></a>
+                    </div>
                 </div>
-                <!-- Conta -->
-                <p><span></span> Weverton Santos</p>
             </nav>
+            <!-- Conta -->
+            <div class="conta_usuario_container">
+                <span class="material-symbols-outlined">account_circle</span>
+                <p class="nome_conta_usuario">Weverton Santos</p>
+            </div>
         </div>
         <!-- ChatBot Container -->
         <div class="chat_container">
+            <div class="mensagem_usuario_container">
+                <div class="mensagem_usuario">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio eos consequuntur nam assumenda delectus deserunt pariatur, temporibus aut consequatur quisquam velit voluptate doloremque mollitia aperiam voluptas repudiandae qui. Sed, culpa!
+                </div>
+            </div>
+            <div class="mensagem_bot_container">
+                <div class="mensagem_bot">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, vel. Impedit quibusdam laboriosam ab soluta nemo eveniet modi, dolores consequuntur incidunt architecto accusantium rem sunt magnam culpa repellendus delectus beatae?
+                </div>
+            </div>
             <!-- Form -->
             <form class="form_container">
-                <input id="caixa_mensagem_usuario" type="text" placeholder="Pergunte alguma coisa">
+                <input id="caixa_mensagem_usuario" placeholder="Pergunte alguma coisa"></input>
                 <button id="botao_enviar"><span class="material-symbols-outlined">send</span></button>
             </form>
         </div>

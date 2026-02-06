@@ -20,8 +20,6 @@ const main = () => {
         
         respostaBot = await respostaApi(valorMensagemUsuario)
         criarMensagemBot(respostaBot)
-            
-        chatContainer.scrollTop = chatContainer.scrollHeight;
     })
 }
 
@@ -44,7 +42,7 @@ const criarMensagemBot = (respostaBot) => {
 
     const mensagemBot = $.createElement("div")
     mensagemBot.classList.add("mensagem_bot")
-    mensagemBot.innerText = respostaBot
+    mensagemBot.innerHTML = marked.parse(respostaBot)
     mensagemBotContainer.appendChild(mensagemBot)
 }
 

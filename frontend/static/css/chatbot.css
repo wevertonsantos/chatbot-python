@@ -89,37 +89,24 @@ input:focus{
 .chat_container{
     display: flex;
     flex-direction: column;
-    overflow: auto;
-    overflow-y: scroll;
     width: 100%;
-    height: 100vh;
-    height: auto;
+    height: 95vh;
+    align-self: center;
+    justify-self: center;
     background-color: #444444;
+    border-radius: 20px;
     margin: 20px;
-    border-radius: 20px;
     align-items: center;
-    justify-content: end;
-}
-
-.chat_container::-webkit-scrollbar {
-    width: 6px;
-}
-
-.chat_container::-webkit-scrollbar-thumb {
-    background: #444;
-    border-radius: 20px;
 }
 
 .mensagens_container{
-    flex: 1;
-    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    overflow: auto;
     width: 100%;
-    height: auto;
     align-items: center;
-    justify-content: end;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
 }
 
 .mensagem_usuario_container{
@@ -143,6 +130,10 @@ input:focus{
     width: 80%;
     height: auto;
     margin: 15px 0px 15px 0px;
+}
+
+.mensagem_bot{
+    white-space: pre-wrap;
 }
 
 .form_container{

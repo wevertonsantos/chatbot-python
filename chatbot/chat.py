@@ -1,25 +1,24 @@
 import os
 from dotenv import load_dotenv
-from openai import OpenAI
+import requests
 load_dotenv()
 
-client = OpenAI(
-    api_key=os.getenv("OPENROUTER_API_KEY"),
-    base_url="https://openrouter.ai/api/v1"
-)
+api_key=os.getenv("APIFREELLM_API_KEY")
+base_url="https://openrouter.ai/api/v1"
 
-models = client.models.list()
-for m in models:
-    print(m.id)
-
-#nousresearch/hermes-3-llama-3.1-405b:free
-#stepfun/step-3.5-flash:free
 def resposta_bot(mensagem):
-    resposta = client.chat.completions.create(
-        model="stepfun/step-3.5-flash:free",
-        messages=[
-            {"role":"user","content":mensagem}
-        ]
-    )
+    url = "https://apifreellm.com/api/v1/chat"
 
-    return resposta.choices[0].message.content
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+
+    payload = {
+        "message": mensagem
+    }
+     
+    resposta = requests.post(url, headers=headers, json=payload)
+
+    data = resposta.json()
+    return data['response']

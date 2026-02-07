@@ -47,8 +47,10 @@ const criarMensagemUsuario = (valorMensagemUsuario) => {
 
     const mensagemUsuario = $.createElement("div")
     mensagemUsuario.classList.add("mensagem_usuario")
-    mensagemUsuario.innerText = valorMensagemUsuario
+    pMensagemUsuario = $.createElement("p")
+    pMensagemUsuario.innerText = valorMensagemUsuario
     mensagemUsuarioContainer.appendChild(mensagemUsuario)
+    mensagemUsuario.appendChild(pMensagemUsuario)
 }
 
 const criarMensagemPensando = () => {

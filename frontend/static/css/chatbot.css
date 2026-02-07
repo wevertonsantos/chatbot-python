@@ -31,10 +31,11 @@ input:focus{
 .nav_logo_container{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 95vh;
     width: 25%;
-    padding: 20px;
+    margin: 20px;
     justify-content: space-between;
+    align-self: center;
 }
 
 .logo{
@@ -51,11 +52,22 @@ input:focus{
 .novo_chat_container{
     cursor: pointer;
     display: flex;
+    justify-items: center;
     align-items: center;
+    background-color: #8ecce9;
+    height: 50px;
+    border-radius: 5px;
+    justify-content: center;
 }
 
 .novo_chat_container p{
+    color: #000;
     margin-left: 5px;
+    font-size: 14px;
+}
+
+.chat_add_on{
+    color: #000;
 }
 
 .seu_chats_container p{
@@ -77,9 +89,13 @@ input:focus{
 }
 
 .conta_usuario_container{
+    background-color: #444444;
     cursor: pointer;
+    justify-content: center;
     display: flex;
     align-items: center;
+    height: 70px;
+    border-radius: 15px;
 }
 
 .nome_conta_usuario{
@@ -95,7 +111,7 @@ input:focus{
     justify-self: center;
     background-color: #444444;
     border-radius: 20px;
-    margin: 20px;
+    margin: 20px 20px 20px 0px;
     align-items: center;
 }
 
@@ -160,7 +176,7 @@ input:focus{
     height: 70px;
     background-color: #222222;
     width: 100%;
-    padding-left: 10px;
+    padding: 0px 10px 0px 10px;
 }
 
 #botao_enviar{
@@ -170,8 +186,4 @@ input:focus{
     background-color: #222222;
     border-radius: 0px 10px 10px 0px;
     padding-right: 10px;
-}
-
-.material-symbols-outlined{
-    color: #ffffff;
 }

@@ -4,7 +4,6 @@ import requests
 load_dotenv()
 
 api_key=os.getenv("APIFREELLM_API_KEY")
-base_url="https://openrouter.ai/api/v1"
 
 def resposta_bot(mensagem):
     url = "https://apifreellm.com/api/v1/chat"

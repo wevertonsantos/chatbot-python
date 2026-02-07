@@ -8,6 +8,12 @@ client = OpenAI(
     base_url="https://openrouter.ai/api/v1"
 )
 
+models = client.models.list()
+for m in models:
+    print(m.id)
+
+#nousresearch/hermes-3-llama-3.1-405b:free
+#stepfun/step-3.5-flash:free
 def resposta_bot(mensagem):
     resposta = client.chat.completions.create(
         model="stepfun/step-3.5-flash:free",

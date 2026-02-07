@@ -141,7 +141,6 @@ input:focus{
 }
 
 .mensagem_bot{
-    display: flex;
     align-items: center;
     white-space: pre-wrap;
 }

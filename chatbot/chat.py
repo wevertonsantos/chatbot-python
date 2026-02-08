@@ -19,5 +19,11 @@ def resposta_bot(mensagem):
      
     resposta = requests.post(url, headers=headers, json=payload)
 
+    if resposta.status_code != 200:
+        return "Erro ao conectar com a API"
+
+    if not data.get("success"):
+        return "Erro na resposta do modelo"
+    
     data = resposta.json()
     return data['response']

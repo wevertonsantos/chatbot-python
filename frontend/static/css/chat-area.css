@@ -47,6 +47,21 @@
 }
 
 .mensagem_bot_container .mensagem_bot{
+    white-space: normal;
+    line-height: 1.6;
+}
+
+.mensagem_bot_container .mensagem_bot p {
+    margin-bottom: 12px;
+}
+
+.mensagem_bot_container .mensagem_bot ul {
+    margin-left: 20px;
+    margin-bottom: 12px;
+}
+
+.mensagem_bot_container .mensagem_bot h3 {
+    margin-top: 16px;
 }
 
 .chat_container .form_container{

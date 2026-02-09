@@ -1,9 +1,11 @@
 import { respostaApi } from "./resApi.js"
 import { criarMensagemUsuario, criarMensagemPensando, criarMensagemBot } from "./criarMensagem.js"
+import {criarModal} from "./modalLogin.js"
 const $ = document
 const form = $.querySelector('form')
 
 const main = () => {
+    // Chatbot
     form.addEventListener('submit', async (e) => {
         e.preventDefault()
         // Pegando mensagem usuário
@@ -27,6 +29,9 @@ const main = () => {
         //Criar mensagem BOT
         criarMensagemBot(pensandoElemento, respostaBot)
     })
+
+    // Login
+    criarModal()
 }
 
 main()

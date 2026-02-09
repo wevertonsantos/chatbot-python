@@ -32,9 +32,26 @@
                 </div>
             </nav>
             <!-- Conta -->
-            <div class="conta_usuario_container">
+            <div class="usuario_container" id="usuario_container">
                 <span class="material-symbols-outlined">account_circle</span>
-                <p class="nome_conta_usuario">Weverton Santos</p>
+                <p class="entrar_usuario" id="entrar_usuario">Entrar</p>
+            </div>
+            <!-- Login modal -->
+            <div class="modal_login" id="modal_login">
+                <div class="modal_login_inner">
+                    <form class="modal_login_form">
+                        <h1 class="text_login">Login</h1>
+                        <div class="email_login">
+                            <input type="text" placeholder="E-mail">
+                            <span class="material-symbols-outlined">alternate_email</span>
+                        </div>
+                        <div class="senha_login">
+                            <input type="password" placeholder="Senha">
+                            <span class="material-symbols-outlined">lock</span>
+                        </div>
+                        <button type="submit" class="botao_login">Entrar</button>
+                    </form>
+                </div>
             </div>
         </div>
         <!-- ChatBot Container -->

@@ -70,24 +70,3 @@
 .nav_logo_container .usuario_container:hover{
     background-color: #686868;
 }
-
-.nav_logo_container .modal_login{
-    top: -5%;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-    background-color: #000;
-    width: 500px;
-    height: 500px;
-    display: flex;
-    justify-self: center;
-    align-self: center;
-    visibility: visible;
-    transition: 0.5s;
-}
-
-.nav_logo_container .modal_login.abrir{
-    visibility: visible;
-    top: 0%;
-}

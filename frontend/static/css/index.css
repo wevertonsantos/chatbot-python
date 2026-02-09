@@ -2,6 +2,7 @@
 @import "./reset.css";
 @import "./nav-logo.css";
 @import "./chat-area.css";
+@import "./tela-login.css";
 
 .main_container{
     height: 100vh;

@@ -1,6 +1,6 @@
 import { respostaApi } from "./resApi.js"
 import { criarMensagemUsuario, criarMensagemPensando, criarMensagemBot } from "./criarMensagem.js"
-import {criarModal} from "./modalLogin.js"
+import {criarModal,fecharModal,criarConta} from "./modalLogin.js"
 const $ = document
 const form = $.querySelector('form')
 
@@ -30,8 +30,14 @@ const main = () => {
         criarMensagemBot(pensandoElemento, respostaBot)
     })
 
-    // Login
+    // Abrindo modal
     criarModal()
+
+    // Fechar Modal
+    fecharModal()
+
+    // Criar conta
+    criarConta()
 }
 
 main()

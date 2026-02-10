@@ -5,7 +5,7 @@ const telaRegistrarFormulario = document.querySelector(".modal_registrar_form")
 const spanRegistrar = document.querySelector(".span_registrar")
 const pFazerLogin = document.querySelector(".span_fazer_login")
 
-export const criarModal = () => {
+export const abrirModal = () => {
     // Abrindo modal
     usuarioContainer.addEventListener("click", () => {
         modalLogin.classList.add("abrir")
@@ -21,7 +21,7 @@ export const fecharModal = () => {
     })
 }
 
-export const criarConta = () => {
+export const trocandoTelaLoginRegistrar = () => {
     spanRegistrar.addEventListener("click", () => {
         telaLoginFormulario.style.display = "none"
         telaRegistrarFormulario.style.display = "flex"

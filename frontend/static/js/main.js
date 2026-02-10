@@ -1,15 +1,16 @@
 import { respostaApi } from "./resApi.js"
 import { criarMensagemUsuario, criarMensagemPensando, criarMensagemBot } from "./criarMensagem.js"
-import {criarModal,fecharModal,criarConta} from "./modalLogin.js"
+import { abrirModal, fecharModal, trocandoTelaLoginRegistrar } from "./modalLogin.js"
+import { criarConta, fazerLogin } from "./loginCriarConta.js"
 const $ = document
-const form = $.querySelector('form')
+const formChatContainer = $.querySelector('.form_chat_container')
 
-const main = () => {
+const main = async () => {
     // Chatbot
-    form.addEventListener('submit', async (e) => {
+    formChatContainer.addEventListener('submit', async (e) => {
         e.preventDefault()
         // Pegando mensagem usuário
-        let valorMensagemUsuario = $.getElementById("caixa_mensagem_usuario").value.trim()
+        const valorMensagemUsuario = $.getElementById("caixa_mensagem_usuario").value.trim()
 
         if (!valorMensagemUsuario) {
             return;
@@ -31,10 +32,13 @@ const main = () => {
     })
 
     // Abrindo modal
-    criarModal()
+    abrirModal()
 
     // Fechar Modal
     fecharModal()
+
+    // Trocando entre login e registrar
+    trocandoTelaLoginRegistrar()
 
     // Criar conta
     criarConta()

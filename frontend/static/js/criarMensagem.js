@@ -36,7 +36,7 @@ export const criarMensagemBot = (elementoPensando, respostaBot) => {
     const divMensagemBot = document.createElement("div")
     divMensagemBot.classList.add("mensagem_bot")
 
-    divMensagemBot.innerHTML = marked.parse(respostaBot.replace(/\n/g, "\n\n"))
+    divMensagemBot.innerHTML = respostaBot
 
     elementoPensando.replaceWith(divMensagemBot)
 }

@@ -2,7 +2,9 @@ from fastapi import FastAPI,Request
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from chat import resposta_bot
+import hashlib
 from schemas import Mensagem, CriarUsuario
+from sqlite import criar_usuario_db
 
 app = FastAPI()
 
@@ -23,4 +25,9 @@ def pegar_resposta_bot(dados: Mensagem):
 
 @app.post("/registrar")
 def registrar_usuario(usuario: CriarUsuario):
-    return {"resposta": "usuario recebido","sucesso":True}
+    try:
+        usuario.senha = hashlib.sha256(usuario.senha.encode('utf-8')).hexdigest()
+        #criar_usuario_db(usuario)
+        return {"resposta": "usuario criado com sucesso","sucesso":True}
+    except Exception as err:
+        return {"resposta": "erro ao criar usuario","sucesso":False,"erro":err}

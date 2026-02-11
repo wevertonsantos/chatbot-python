@@ -33,7 +33,7 @@ def criar_usuario_db(usuario):
     try:
         cursor.execute("""
                 INSERT INTO usuarios
-                (nome, email, senha_hash)
+                (nome_usuario, email, senha_hash)
                 VALUES
                 (?,?,?)
             """,(usuario.nome_usuario, usuario.email, usuario.senha))
@@ -47,5 +47,3 @@ def criar_usuario_db(usuario):
         raise ValueError(f"Erro inesperado ao criar usuário: {e}") from e
     finally:
         conexao_db.close()
-
-criar_tabela_usuarios()

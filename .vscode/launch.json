@@ -1,0 +1,24 @@
+    {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Debug FastAPI (Python)",
+                "type": "python",
+                "request": "launch",
+                "module": "uvicorn", // Usamos o uvicorn para rodar sua aplicação FastAPI
+                "args": [
+                    "api:app", // <--- IMPORTANTE: "api" é o nome do seu arquivo Python (sem .py) e "app" é a sua instância FastAPI (ex: app = FastAPI())
+                    "--host", "0.0.0.0", // Para a aplicação ser acessível de qualquer IP (útil para testar de fora da máquina local)
+                    "--port", "8000", // A porta que sua aplicação vai usar
+                    // "--reload" // O reload pode causar comportamento inesperado com o depurador. É melhor desativar durante o debug e reiniciar o depurador se fizer muitas mudanças.
+                ],
+                "cwd": "${workspaceFolder}", // Garante que o depurador inicie no diretório raiz do seu projeto
+                "env": {
+                    "PYTHONUNBUFFERED": "1" // Essencial para que o output do Python apareça imediatamente no terminal
+                },
+                "console": "integratedTerminal", // Para ver os logs do uvicorn e do seu print() no terminal do VS Code
+                "justMyCode": true, // Debuga apenas o seu código, pulando as bibliotecas internas do Python. MUITO útil!
+                "jinja": true // Ajuda o VS Code a entender os templates Jinja2 (para o seu frontend)
+            }
+        ]
+    }
